@@ -1,0 +1,171 @@
+﻿@model IEnumerable<FlipkartWeb.Models.LaptopModel>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+
+<h1>@ViewData["AllLaptop"]</h1>
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_Layout";
+}
+
+@{
+    //Layout = "_Layout1";
+}
+
+
+
+
+
+
+<div>
+ <nav class="navbar navbar-expand-sm bg-light"> 
+    
+        <div class="container-fluid" id="colo">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="Home/Index" id="link-color">Electronics</a>
+                </li>
+               
+                <li class="nav-item">
+                    <a class="nav-link" href="Home/Aboutus" id="link-color">TV & Appliances</a>
+                </li>
+               
+                <li class="nav-item">
+                    <a class="nav-link" href="Product/Index" id="link-color">Men</a>
+                </li>
+               
+                <li class="nav-item">
+                    <a class="nav-link" href="Product/Index" id="link-color">Women</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="Product/Index" id="link-color">Boys&Kids</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Product/Index" id="link-color">Home&Furniture</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Product/Index" id="link-color">Sports,Books & More</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Product/Index" id="link-color">Flights</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Product/Index" id="link-color">Offer Zone</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+   
+
+    <div>
+       
+       
+
+           
+                <div id="mainNav" class="navbar navbar-expand-sm navbar-expand-lg bg-light">
+                    <div class="container-fluid" >
+
+                @{
+                    foreach (var item in Model)
+                    {
+
+                        <div class="card" >
+                            <img class="card-img-top" src="~/@item.Profilepicture" alt="Card image" style="width:100%">
+
+                           
+
+                            <div class="card-body">
+                                @*     <form asp-controller="Cart" asp-action="AddToCart" method="post">
+                                <h6 f>Device ID:@item.DeviceID Device Name:@item.DeviceName</h6>
+                                <h6 class="card-title">Model Name:@item.Modelname Price:@item.Price</h6>
+                                <p class="card-text">Product ID:@item.ProductID InstalledRam:@item.InstalledRAM</p>
+                                <p class="card-text">Processor:@item.Processor</p>
+                                 <a href="/Home/Laptop?DeviceID=@item.DeviceID" class="btn btn-primary">See Details</a> 
+                                     <a href="/Home/Laptop?DeviceID=@item.DeviceID" class="btn btn-primary">ADD Cart</a> 
+                                <button type="submit" class="btn btn-primary" asp-controller="Cart" asp-action="AddToCart">Login </button>
+
+                               </form>*@
+
+
+                                <form asp-controller="Cart" asp-action="AddToCart" method="post">
+                                    <input type="hidden" name="id" value="@item.DeviceID" />
+                                    <h6 f>Device ID:@item.DeviceID Device Name:@item.DeviceName</h6>
+                                    <h6 class="card-title">Model Name:@item.Modelname Price:@item.Price</h6>
+                                    <input type="hidden" name="name" value="@item.DeviceName" />
+                                    <input type="hidden" name="price" value="@item.Price" />
+                                    <button type="submit" class="btn btn-primary">Add to Cart</button>
+                                </form>
+                            </div>
+
+                           
+                          </div>
+
+                      <div>
+
+                      </div>
+
+
+                     
+
+
+                     
+                    }
+                }
+                   </div>
+                </div>
+
+
+               @* <div id="mainNav" class="navbar navbar-expand-sm navbar-expand-lg bg-light">
+                    <div class="container-fluid">
+
+                        <h2>@item.Modelname</h2>
+
+                        <div class="card" style="width:400px">
+                            <img class="card-img-top" src="~/Lap4.jpg" alt="Card image" style="width:100%">
+                            <div class="card-body">
+                                <h4 class="card-title">@item.Modelname @item.Price</h4>
+                                @* <h4 class="card-title">@item.DeviceID @item.DeviceName</h4>
+                        <h4 class="card-title">@item.ProductID @item.Processor</h4>
+                        <h4 class="card-title">@item.InstalledRAM @item.DeviceName</h4> 
+
+                                <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
+                                <a href="#" class="btn btn-primary">See Profile</a>
+                            </div>
+                        </div>
+
+
+                        <div class="card" style="width:400px">
+                            <img class="card-img-top" src="~/Lap5.jpg" alt="Card image" style="width:100%">
+                            <div class="card-body">
+                                <h4 class="card-title">@item.Modelname @item.Price</h4>
+
+
+                                <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
+                                <a href="#" class="btn btn-primary">See Profile</a>
+                            </div>
+                        </div>
+
+
+                        <div class="card" style="width:400px">
+                            <img class="card-img-top" src="~/Lap6.jpg" alt="Card image" style="width:100%">
+                            <div class="card-body">
+                                <h4 class="card-title">@item.Modelname @item.Price</h4>
+
+
+                                <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
+                                <a href="#" class="btn btn-primary">See Profile</a>
+                            </div>
+                        </div>
+
+                    </div>
+        </div>*@
+           
+    </div>
+</div>

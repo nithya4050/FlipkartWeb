@@ -1,0 +1,69 @@
+﻿@model FlipkartWeb.Models.AuthendModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+@{
+    ViewData["Title"] = "Registration";
+}
+
+
+@{
+    Layout = "_AuthLayout";
+}
+
+<h2 id="Alig">Register</h2>
+
+@* @using (Html.BeginForm("Registrationpost", "Authend", FormMethod.Post, new { data = Model }))
+{ }
+ *@
+ 
+ 
+
+
+ <form method="post" class="form-container" asp-controller="Authend"> 
+    <div class="imgcontainer">
+        <img src="~/loginimg1.jpg" alt="Avatar" class="avatar"/>
+    </div>
+
+    <div class="container">
+
+       <label for="uname"><b>EmailId</b></label>
+        <input asp-for="Emailid" type="text" name="emailid" />
+        <span asp-validation-for="Emailid" class="text-danger"></span>
+
+
+        <label for="email"><b>Password</b></label>
+        <input asp-for="Password" type="text" placeholder="Password" name="Password" required>
+        <span asp-validation-for="Password" class="text-danger"></span>
+
+
+
+        <label for="ConfirmPassword"><b>Confirm Password</b></label>
+        <input asp-for="ConfirmPassword" type="password" placeholder="password" name="ConfirmPassword" required>
+        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+
+        <button type="submit" class="btn btn-success" asp-controller="Authend" asp-action="Registrationpost">Register </button>
+
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+        <button type="button" class="cancelbtn">Cancel</button>
+        <span id="t1" class="psw">Forgot <a href="#">password?</a></span>
+       
+       
+    </div>
+    <p id="t1" class="text-danger">@ViewBag.Message</p>
+    <p id="t1">Already have an account? <a asp-controller="Authend" asp-action="Login">Login here</a>.</p>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
